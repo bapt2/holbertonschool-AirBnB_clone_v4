@@ -3,9 +3,21 @@ header {
     height: 70px;
     width: 100%;
     border-bottom: 1px solid #CCCCCC;
+    
 }
 header .logo {
     background: url("../images/logo.png") no-repeat;
     left: 20px;
     height: 100%;
+}
+.available {
+    background-color: #ff545f;
+}
+
+header .available {
+    align-items: right;
+	border-radius: 40px;
+    vertical-align: center;
+	border-right: 30px;
+	background-color: #cccccc;
 }
