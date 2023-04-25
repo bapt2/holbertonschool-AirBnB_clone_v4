@@ -10,11 +10,11 @@ header .logo {
     left: 20px;
     height: 100%;
 }
-.available {
+#api_status.available {
     background-color: #ff545f;
 }
 
-header .available {
+#api_status{
     align-items: right;
 	border-radius: 40px;
     vertical-align: center;
