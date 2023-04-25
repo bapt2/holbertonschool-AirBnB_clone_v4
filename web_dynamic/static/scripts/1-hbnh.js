@@ -1,18 +1,27 @@
 $(document).ready(function () {
-  let new_list = [];
+  const amenities = {};
+
   $('input[type="checkbox"]').change(function () {
     if ($(this).prop('checked')) {
-      new_list.push($(this).attr('data-id'));
+      amenities[$(this).attr('data-id')] = $(this).attr('data-name');
     } else {
-      new_list = new_list.filter(id => id !== $(this).attr('data-id'));
+      delete amenities[$(this).attr('data-id')];
     }
+    let text = '';
+    for (const amenity in amenities) {
+      text += amenities[amenity] + ', ';
+    }
+    text = text.slice(0, -2); // remove last comma and space
+    $('div.amenities h4').text(text);
+  });
+});
 
-    let amenitiesText = '';
-    for (const id of new_list) {
-      const name = $('input[data-id="' + id + '"]').attr('data-name');
-      amenitiesText += name + ', ';
+$(document).ready(function () {
+  $.get('http://0.0.0.0:5001/api/v1/status/', function (data) {
+    if (data.status === 'OK') {
+      $('#api_status').addClass('available');
+    } else {
+      $('#api_status').removeClass('available');
     }
-    amenitiesText = amenitiesText.slice(0, -2);
-    $('.amenities h4').text(amenitiesText);
   });
 });
