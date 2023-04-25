@@ -1,17 +1,18 @@
-$(document).ready(function() {
-  let amenities = {};
-
-  $('input[type="checkbox"]').change(function() {
+$(document).ready(function () {
+  let new_list = [];
+  $('input[type="checkbox"]').change(function () {
     if ($(this).prop('checked')) {
-      amenities[$(this).attr('data-id')] = $(this).attr('data-name');
+      new_list.push($(this).attr('data-id'));
     } else {
-      delete amenities[$(this).attr('data-id')];
+      new_list = new_list.filter(id => id !== $(this).attr('data-id'));
     }
-    let text = '';
-    for (let amenity in amenities) {
-      text += amenities[amenity] + ', ';
+
+    let amenitiesText = '';
+    for (const id of new_list) {
+      const name = $('input[data-id="' + id + '"]').attr('data-name');
+      amenitiesText += name + ', ';
     }
-    text = text.slice(0, -2); // remove last comma and space
-    $('div.amenities h4').text(text);
+    amenitiesText = amenitiesText.slice(0, -2);
+    $('.amenities h4').text(amenitiesText);
   });
 });
