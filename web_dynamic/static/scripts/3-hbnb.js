@@ -25,9 +25,30 @@ $(document).ready(function () {
       }
     });
   
-  const places = {}
-  const Url = "http://0.0.0.0:5001/api/v1/places_search"
-  const Data = "Content-Type: application/json"
-  $.post(Url, Data, function(data, response) {
-    $.each()
+  $.ajax({
+    type:'POST',
+    url: 'http://0.0.0.0:5001/api/v1/places_search',
+    data: '{}',
+    contentType: 'application/json',
+    dataType: 'json',
+    success: function(data) {
+        for (i in data.places) {
+            <article>
+				<div class="title_box">
+					<h2>${data[i].name}</h2>
+					<div class="price_by_night">${data[i].price_by_night}</div>
+				</div>
+				<div class="information">
+					<div class="max_guest">${data[i].max_guest}</div>
+					<div class="number_rooms">${data[i].number_rooms}</div>
+					<div class="number_bathrooms">${data[i].number_bathrooms}</div>
+				</div>
+				<div class="user">
+					<b>Owner:</b>${data[i].user.first_name}${data[i].user.last_name}</div>
+				<div class="description">
+					${data[i].description}
+				</div>
+			</article>
+        }
+    }
   })
