@@ -39,37 +39,6 @@ $.ajax({
     }
   });
 
-/*$(function() {
-    $.ajax({
-    type: 'POST',
-    url: 'http://0.0.0.0:5000/api/v1/views/places_search',
-    data: '{}',
-    contentType: 'application/json',
-    dataType: 'json',
-    success: function (data) {
-      for (const i in data.places) {
-        <article>
-          <div class='title_box'>
-            <h2>${data[i].name}</h2>
-            <div class='price_by_night'>${data[i].price_by_night}</div>
-          </div>
-          <div class='information'>
-            <div class='max_guest'>${data[i].max_guest}</div>
-            <div class='number_rooms'>${data[i].number_rooms}</div>
-            <div class='number_bathrooms'>${data[i].number_bathrooms}</div>
-          </div>
-          <div class='user'>
-            <b>Owner:</b>${data[i].user.first_name}${data[i].user.last_name}
-          </div>
-          <div class='description'>
-            ${data[i].description}
-          </div>
-        </article>;
-      }
-    }
-  });
-})
-*/
 const APIURL = 'http://0.0.0.0:5000/api/v1/status';
   $.get(APIURL, function (data, response) {
     if (response === 'success' && data.status === 'OK') {
